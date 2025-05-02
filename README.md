@@ -1,13 +1,13 @@
 # mosbrew_scales
 
-## Компиляция:
+## Compilation:
 
 ```
 env GOOS=windows GOARCH=386 go build -v main.go
 env GOOS=windows GOARCH=386 go build -ldflags -H=windowsgui -v main.go
 ```
 
-Отладка через виртуальный com-порт:
+Debugging via virtual COM port:
 ```
 alexey-r-laptop:~ alexey$ socat -d -d pty,raw,echo=0 pty,raw,echo=0
 2019/03/10 23:09:48 socat[30669] N PTY is /dev/ttys000
@@ -17,12 +17,12 @@ alexey-r-laptop:~ alexey$ socat -d -d pty,raw,echo=0 pty,raw,echo=0
 echo "TEST" > /dev/ttys003
 echo $(( ( RANDOM % 100 )  + 1 )) > /dev/ttys003
 
-cat < /dev/ttys000 - можно посмотреть вход
+cat < /dev/ttys000 - to view the input
 ```
 
 go run main.go
 
-Примеры данных:
+Example Data:
 ```
 35 received len(6): 5   : 00110101 00000000 00000000 00000000 00001101 00001010  : ok!
 40 received len(6): @  : 01000000 00000000 00000000 00100000 00001101 00001010  : not ok: strconv.Atoi: parsing "": invalid syntax
